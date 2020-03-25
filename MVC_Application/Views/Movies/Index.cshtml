@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MVC_Application.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@if (!Model.Any())
+{
+    <p>No Movies Posted yet</p>
+}
+else
+{
+    <ul>
+        @foreach (var cust in Model)
+        {
+            <li>@cust.Name</li>
+        }
+    </ul>
+}
