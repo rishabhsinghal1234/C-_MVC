@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MVC_Application.Models.Customer>
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+@if (!Model.Any())
+{
+    <p>No Customers get this movie</p>
+}
+else
+{
+    <ul>
+        @foreach (var cust in Model)
+        {
+            @Html.ActionLink(cust.Name, "Details", "Customer", new { id = cust.Id}, null)
+            <br />
+        }
+    </ul>
+}
