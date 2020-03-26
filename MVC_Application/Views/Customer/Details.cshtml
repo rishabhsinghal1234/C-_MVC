@@ -7,3 +7,13 @@
 <h2>Details</h2>
 
 <h4>@Model.Name</h4>
+<ul>
+    <li>
+        MemberShip Type : @Model.MembershipType.Name
+    </li>
+    @*<li>Date Of Birth : @Model.DateOfBirth</li>*@
+    @if (Model.DateOfBirth != null)
+        {
+            <li>Date Of Birth : @Model.DateOfBirth</li>
+        }
+</ul>

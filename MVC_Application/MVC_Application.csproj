@@ -179,11 +179,52 @@
     <Compile Include="Migrations\202003251903084_InitialModel.Designer.cs">
       <DependentUpon>202003251903084_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003260529579_IsSubscribedToNewsLetter.cs" />
+    <Compile Include="Migrations\202003260529579_IsSubscribedToNewsLetter.Designer.cs">
+      <DependentUpon>202003260529579_IsSubscribedToNewsLetter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260538067_AddMigrationType.cs" />
+    <Compile Include="Migrations\202003260538067_AddMigrationType.Designer.cs">
+      <DependentUpon>202003260538067_AddMigrationType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260543272_AddMigrationType1.cs" />
+    <Compile Include="Migrations\202003260543272_AddMigrationType1.Designer.cs">
+      <DependentUpon>202003260543272_AddMigrationType1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260712482_PopulateMigrationTypes.cs" />
+    <Compile Include="Migrations\202003260712482_PopulateMigrationTypes.Designer.cs">
+      <DependentUpon>202003260712482_PopulateMigrationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260726433_AddedAnnotations.cs" />
+    <Compile Include="Migrations\202003260726433_AddedAnnotations.Designer.cs">
+      <DependentUpon>202003260726433_AddedAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260900400_AddedAnnotation.cs" />
+    <Compile Include="Migrations\202003260900400_AddedAnnotation.Designer.cs">
+      <DependentUpon>202003260900400_AddedAnnotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260941263_addednameproperty.cs" />
+    <Compile Include="Migrations\202003260941263_addednameproperty.Designer.cs">
+      <DependentUpon>202003260941263_addednameproperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003260949253_addedDOB.cs" />
+    <Compile Include="Migrations\202003260949253_addedDOB.Designer.cs">
+      <DependentUpon>202003260949253_addedDOB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003261008196_addedpropertiesinmoviestable.cs" />
+    <Compile Include="Migrations\202003261008196_addedpropertiesinmoviestable.Designer.cs">
+      <DependentUpon>202003261008196_addedpropertiesinmoviestable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003261010358_InitialModel1.cs" />
+    <Compile Include="Migrations\202003261010358_InitialModel1.Designer.cs">
+      <DependentUpon>202003261010358_InitialModel1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -250,6 +291,7 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -270,6 +312,36 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003251903084_InitialModel.resx">
       <DependentUpon>202003251903084_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260529579_IsSubscribedToNewsLetter.resx">
+      <DependentUpon>202003260529579_IsSubscribedToNewsLetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260538067_AddMigrationType.resx">
+      <DependentUpon>202003260538067_AddMigrationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260543272_AddMigrationType1.resx">
+      <DependentUpon>202003260543272_AddMigrationType1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260712482_PopulateMigrationTypes.resx">
+      <DependentUpon>202003260712482_PopulateMigrationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260726433_AddedAnnotations.resx">
+      <DependentUpon>202003260726433_AddedAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260900400_AddedAnnotation.resx">
+      <DependentUpon>202003260900400_AddedAnnotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260941263_addednameproperty.resx">
+      <DependentUpon>202003260941263_addednameproperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003260949253_addedDOB.resx">
+      <DependentUpon>202003260949253_addedDOB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003261008196_addedpropertiesinmoviestable.resx">
+      <DependentUpon>202003261008196_addedpropertiesinmoviestable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003261010358_InitialModel1.resx">
+      <DependentUpon>202003261010358_InitialModel1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,12 @@ namespace MVC_Application.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
         // GET: Movies
         public ActionResult Random(int id)
         {
@@ -32,15 +38,22 @@ namespace MVC_Application.Controllers
             return Content("id="+id);
         }
 
-        public ActionResult Index(int? pageNumber, string sortBy)
+        public ActionResult Index()
         {
             //if (!pageNumber.HasValue)
             //    pageNumber = 1;
             //if (String.IsNullOrWhiteSpace(sortBy))
             //    sortBy = "Date";
             //return Content(String.Format("PageNumber={0} & SortBy={1}", pageNumber, sortBy));
-            var movies = GetMovies();
+            var movies = _context.Movies.ToList();
+            //var movies = GetMovies();
             return View(movies);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            return View(movie);
         }
 
         [Route("movies/release/{year}/{month:range(1, 12)}")]

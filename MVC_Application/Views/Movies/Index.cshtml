@@ -12,10 +12,35 @@
 }
 else
 {
-    <ul>
+    <table class="table table-striped table-responsive table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Customers
+                </th>
+                <th>
+                    Discount Rate
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id}, null)
+                    </td>
+                    <td>
+                        @movie.Genre
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*<ul>
         @foreach (var cust in Model)
         {
             <li>@cust.Name</li>
         }
-    </ul>
+    </ul>*@
 }
