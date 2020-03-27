@@ -5,6 +5,8 @@
 }
 
 <h2>Movies</h2>
+<div class="btn btn-primary"><p style="text-decoration-color: white">@Html.ActionLink("New", "New", "Movies")</p></div>
+
 
 @if (!Model.Any())
 {
@@ -16,7 +18,7 @@ else
         <thead>
             <tr>
                 <th>
-                    Customers
+                    Movie
                 </th>
                 <th>
                     Discount Rate
@@ -28,10 +30,10 @@ else
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id}, null)
+                        @Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id}, null)
                     </td>
                     <td>
-                        @movie.Genre
+                        @movie.Stocks
                     </td>
                 </tr>
             }

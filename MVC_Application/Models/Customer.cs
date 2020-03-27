@@ -13,6 +13,8 @@ namespace MVC_Application.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
+        [Display(Name = "Date Of Birth")]
         public DateTime DateOfBirth { get; set; }
         public bool IsSubscribedToNewsLetter { get; set; }
         public MembershipType MembershipType { get; set; }

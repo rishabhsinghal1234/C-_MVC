@@ -1,4 +1,5 @@
 ﻿using MVC_Application.Models;
+using MVC_Application.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -27,6 +28,48 @@ namespace MVC_Application.Controllers
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             //var customer = GetCustomers();
             return View(customers);
+        }
+
+        public ActionResult New()
+        {
+            var membershiptypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel
+            {
+                MembershipTypes = membershiptypes
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            if(customer.Id == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                var CustomerInDB = _context.Customers.Single(c => c.Id == customer.Id);
+                CustomerInDB.Name = customer.Name;
+                CustomerInDB.MembershipTypeId = customer.MembershipTypeId;
+                CustomerInDB.DateOfBirth = customer.DateOfBirth;
+                CustomerInDB.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customer");
+        }
+
+        public ActionResult Edit(int Id)
+        {
+            var Customer = _context.Customers.SingleOrDefault(c => c.Id == Id);
+            if(Customer == null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = new NewCustomerViewModel
+            {
+                Customer = Customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("New", viewModel);
         }
 
         public ActionResult Details(int id)

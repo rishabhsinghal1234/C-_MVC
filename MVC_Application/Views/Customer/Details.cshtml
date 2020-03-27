@@ -14,6 +14,6 @@
     @*<li>Date Of Birth : @Model.DateOfBirth</li>*@
     @if (Model.DateOfBirth != null)
         {
-            <li>Date Of Birth : @Model.DateOfBirth</li>
+            <li>Date Of Birth : @Model.DateOfBirth.ToLongDateString()</li>
         }
 </ul>
