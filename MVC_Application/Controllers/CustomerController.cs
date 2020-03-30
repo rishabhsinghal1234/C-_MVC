@@ -35,14 +35,26 @@ namespace MVC_Application.Controllers
             var membershiptypes = _context.MembershipTypes.ToList();
             var viewModel = new NewCustomerViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = membershiptypes
             };
             return View(viewModel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var membershiptypes = _context.MembershipTypes.ToList();
+                var viewModel = new NewCustomerViewModel
+                {
+                    MembershipTypes = membershiptypes,
+                    Customer = customer
+                };
+                return View("New", viewModel);
+            }
             if(customer.Id == 0)
                 _context.Customers.Add(customer);
             else

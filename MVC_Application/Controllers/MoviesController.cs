@@ -62,8 +62,8 @@ namespace MVC_Application.Controllers
                 ReleaseDate = movie.ReleaseDate,
                 GenreId= movie.GenreId,
                 Id = movie.Id,
-                Genres = genre
-                
+                Genres = genre,
+                Stocks = movie.Stocks
             };
             return View("New", viewModel);
         }
@@ -83,6 +83,18 @@ namespace MVC_Application.Controllers
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new NewMovieViewModel
+                {
+                    Name = movie.Name,
+                    ReleaseDate = movie.ReleaseDate,
+                    GenreId = movie.GenreId,
+                    Id = movie.Id,
+                    Genres = _context.Genres.ToList()
+                };
+                return View("New", viewModel);
+            }
             if(movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
