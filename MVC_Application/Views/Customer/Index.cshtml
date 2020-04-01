@@ -12,7 +12,7 @@
 }
 else
 {
-    <table class="table table-striped table-responsive table-hover table-bordered">
+    <table id="customerTable" class="table table-striped table-responsive table-hover table-bordered">
         <thead>
             <tr>
                 <th>
@@ -21,10 +21,11 @@ else
                 <th>
                     Discount Rate
                 </th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var cust in Model)
+            @*@foreach(var cust in Model)
             {
                 <tr>
                     <td>
@@ -33,8 +34,74 @@ else
                     <td>
                         @cust.MembershipType.Name
                     </td>
+                    <td>
+                        <button data-customer-id ="@cust.Id" class="btn-link js-delete">Delete</button>
+                    </td>
                 </tr>
-            }
+            }*@
         </tbody>
     </table>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(() => {
+
+            var table = $("#customerTable").DataTable({
+                ajax: {
+                    url: "/api/customer",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "Name",
+                        render: function (data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.Id + "'>" + customer.Name + "</a>";
+                        }
+                    },
+                    {
+                        data: "membershipType.Name"
+                    },
+                    {
+                        data: "Id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            //$("#customerTable").DataTable();
+            $("#customerTable").on("click", ".js-delete", function() {
+                if (confirm("Are you Sure you wanna delete")) {
+                    $.ajax({
+                        url: "/api/customer/" + $(this).attr("data-customer-id"),
+                        method: "DELETE",
+                        success: () => {
+                            //$(this).parents("tr").remove();
+                            table.row($(this).parents("tr")).remove().draw();
+                        }
+                    })
+                }
+            })
+        })
+
+        //$(document).ready(function () {
+        //    $("#customerTable .js-delete").on("click", function () {
+        //        bootbox.confirm("Are you Sure you wanna delete", function (result) {
+        //            if (result) {
+        //                $.ajax({
+        //                    url: "/api/customer/" + $(this).attr("data-customer-id"),
+        //                    method: "DELETE",
+        //                    success: function () {
+        //                        console.log("deleted");
+        //                        $(this).parents("tr").remove();
+        //                    }
+        //                })
+        //            }
+        //        })
+        //    })
+        //})
+    </script>    
 }

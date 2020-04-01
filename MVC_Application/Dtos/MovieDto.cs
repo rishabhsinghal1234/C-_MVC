@@ -9,9 +9,8 @@ namespace MVC_Application.Dtos
     public class MovieDto
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(100)]
         public string Name { get; set; }
+        public GenreDto genre { get; set; }
         public int GenreId { get; set; }
         public DateTime ReleaseDate { get; set; }
         public DateTime DateAdded { get; set; }
